@@ -6,10 +6,10 @@ const UserUpdateService= async (Request, DataModel)=>{
         let data = await DataModel.updateOne({email: Request.headers.email}, Request.body)
         return {status:"success", data: data}
     }
-    catch{
+    catch{ 
         return {status:"fail", data: error}
     }
 }
 
 
-module.exports = UserUpdateService
+module.exports = UserUpdateService 

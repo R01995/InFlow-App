@@ -58,8 +58,7 @@ router.post("/brand-update/:id", AuthVerifyMiddlewer, BrandController.UpdateBran
 router.get("/brand-dropdown", AuthVerifyMiddlewer, BrandController.BrandDropDown)
 router.get("/brand-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, BrandController.BrandList)
 router.get("/brand-delete/:id", AuthVerifyMiddlewer, BrandController.BrandDelete)
-
-//Brand-Controllar start
+//Brand-Controllar end
 
 //category -Api start
 router.post("/create-category", AuthVerifyMiddlewer, CategoryController.CreateCategory)
@@ -68,18 +67,17 @@ router.post("/update-category/:id", AuthVerifyMiddlewer, CategoryController.Cate
 router.get("/category-dropdown", AuthVerifyMiddlewer, CategoryController.CategoryDropdown)
 router.get("/category-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, CategoryController.CategoryList)
 router.get("/category-delete/:id", AuthVerifyMiddlewer, CategoryController.CategoryDelete)
-
 //category -Api end
 
-//create-customer api start
+//Customer api start
 router.post("/create-customer", AuthVerifyMiddlewer, CustomerController.CreateCustomer)
 router.get("/customer-details/:id", AuthVerifyMiddlewer, CustomerController.CustomerDetailsById)
 router.post("/customer-update/:id", AuthVerifyMiddlewer, CustomerController.CustomerUpdate)
 router.get("/customer-dropdown", AuthVerifyMiddlewer, CustomerController.CustomerDropdown)
 router.get("/customer-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, CustomerController.CustomerList)
-
 //create-customer api end
-//create-supplier api start
+
+//Supplier api start
 router.post("/create-supplier", AuthVerifyMiddlewer, SupplierController.CreateSupplier)
 router.post("/supplier-details/:id", AuthVerifyMiddlewer, SupplierController.SupplierDetailsById)
 router.post("/supplier-update/:id", AuthVerifyMiddlewer, SupplierController.SupplierUpdate)
@@ -87,50 +85,61 @@ router.get("/supplier-dropdown", AuthVerifyMiddlewer, SupplierController.Supplie
 router.get("/supplier-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, SupplierController.SupplierList)
 //create-supplier api end
 
-//create product start
+//Product Api start
 router.post("/create-product", AuthVerifyMiddlewer, ProductController.CreateProduct)
 router.post("/product-details/:id", AuthVerifyMiddlewer, ProductController.ProductDetailsById)
 router.post("/product-update/:id", AuthVerifyMiddlewer, ProductController.UpdateProduct)
 router.get("/product-dropdown", AuthVerifyMiddlewer, ProductController.ProductDropdown)
 router.get("/product-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ProductController.ProductDetails)
+//Product Api end
 
-//create product end
-// Expense Type
+// Expense Type api start
 router.post("/create-expense-type", AuthVerifyMiddlewer, ExpenseTypeController.CreateExpenseType)
 router.post("/expense-type-details/:id", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeDetailsById)
 router.post("/expense-type-update/:id", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeUpdate)
 router.get("/expense-type-dropdown", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeDropDown)
 router.get("/expense-type-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeList)
+// Expense Type api end     
 
-
+// Expense  api start
 router.post("/create-expense", AuthVerifyMiddlewer, ExpensesController.CreateExpense)
 router.post("/expense-details/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseDetailsById)
 router.post("/expense-update/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseUpdate)
 router.get("/expense-delete/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseDelete)
 router.get("/expense-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ExpensesController.ExpenseList)
+// Expense  api end
 
-// purchase 
+// purchase api start
 router.post("/create-purchase", AuthVerifyMiddlewer, PurchaseController.CreatePurchase)
 router.get("/purchase-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, PurchaseController.PurchaseList)
 router.get("/purchase-delete/:id", AuthVerifyMiddlewer, PurchaseController.PurchaseDelete)
-//Sales
+// purchase api end
+
+//Sales api start
 router.post("/create-sales", AuthVerifyMiddlewer, SalesController.CreateSales)
 router.get("/sales-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, SalesController.SalesList)
 router.get("/sales-delete/:id", AuthVerifyMiddlewer, SalesController.SalesDelete)
-//Return
+//Sales api start
+
+//Return api start
 router.post("/create-return", AuthVerifyMiddlewer, ReturnController.CreateReturn)
 router.get("/return-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ReturnController.ReturnList)
 router.get("/return-delete/:id", AuthVerifyMiddlewer, ReturnController.ReturnDelete)
-//Repoet
+//Return api end
+
+//Repoet api start
 router.post("/expense-repoet", AuthVerifyMiddlewer, ReportController.ExpenseReportByDate)
 router.post("/purchase-repoet", AuthVerifyMiddlewer, ReportController.PurchaseReportByDate)
 router.post("/sales-repoet", AuthVerifyMiddlewer, ReportController.SalesReportByDate)
 router.post("/return-repoet", AuthVerifyMiddlewer, ReportController.ReturnReportByDate)
-//Sumamry
+//Repoet api end
+
+//Sumamry api start
 router.get("/expense-summary", AuthVerifyMiddlewer, SummaryController.ExpenseSumamry)
 router.get("/purchase-summary", AuthVerifyMiddlewer, SummaryController.PurchaseSummary)
 router.get("/return-summary", AuthVerifyMiddlewer, SummaryController.ReturnsSummary)
 router.get("/sales-summary", AuthVerifyMiddlewer, SummaryController.SelesSummary)
+//Sumamry api end
 
 module.exports = router
 

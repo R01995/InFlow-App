@@ -2,7 +2,7 @@ const OtpModel = require("../../models/User/OtpModel")
 const EmailUtility = require("../../utility/SendEmail")
 
 const UserEmailVerifyService = async (Request, DataModel)=>{
-
+  
     try{
 
         let email = Request.params.email
