@@ -48,7 +48,7 @@ router.post("/update-profile", AuthVerifyMiddlewer, UsersControllar.UpdateUser)
 //email-verify
 router.get("/email-verify/:email", UsersControllar.EmailVerify)
 router.get("/otp-verify/:email/:otp", UsersControllar.OtpVerify)
-router.get("/reset-password", UsersControllar.ResetPassword)
+router.post("/reset-password", UsersControllar.ResetPassword)
 //email-verify
 
 //Brand-Controllar start
