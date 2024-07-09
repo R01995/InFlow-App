@@ -75,6 +75,8 @@ router.get("/customer-details/:id", AuthVerifyMiddlewer, CustomerController.Cust
 router.post("/customer-update/:id", AuthVerifyMiddlewer, CustomerController.CustomerUpdate)
 router.get("/customer-dropdown", AuthVerifyMiddlewer, CustomerController.CustomerDropdown)
 router.get("/customer-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, CustomerController.CustomerList)
+router.get("/customer-delete/:id", AuthVerifyMiddlewer, CustomerController.CustomerDelete)
+
 //create-customer api end
 
 //Supplier api start
@@ -83,6 +85,7 @@ router.post("/supplier-details/:id", AuthVerifyMiddlewer, SupplierController.Sup
 router.post("/supplier-update/:id", AuthVerifyMiddlewer, SupplierController.SupplierUpdate)
 router.get("/supplier-dropdown", AuthVerifyMiddlewer, SupplierController.SupplierDropdown)
 router.get("/supplier-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, SupplierController.SupplierList)
+router.get("/supplier-delete/:id", AuthVerifyMiddlewer, SupplierController.SupplierDelete)
 //create-supplier api end
 
 //Product Api start
