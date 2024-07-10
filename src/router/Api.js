@@ -81,7 +81,7 @@ router.get("/customer-delete/:id", AuthVerifyMiddlewer, CustomerController.Custo
 
 //Supplier api start
 router.post("/create-supplier", AuthVerifyMiddlewer, SupplierController.CreateSupplier)
-router.post("/supplier-details/:id", AuthVerifyMiddlewer, SupplierController.SupplierDetailsById)
+router.get("/supplier-details/:id", AuthVerifyMiddlewer, SupplierController.SupplierDetailsById)
 router.post("/supplier-update/:id", AuthVerifyMiddlewer, SupplierController.SupplierUpdate)
 router.get("/supplier-dropdown", AuthVerifyMiddlewer, SupplierController.SupplierDropdown)
 router.get("/supplier-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, SupplierController.SupplierList)
@@ -90,7 +90,7 @@ router.get("/supplier-delete/:id", AuthVerifyMiddlewer, SupplierController.Suppl
 
 //Product Api start
 router.post("/create-product", AuthVerifyMiddlewer, ProductController.CreateProduct)
-router.post("/product-details/:id", AuthVerifyMiddlewer, ProductController.ProductDetailsById)
+router.get("/product-details/:id", AuthVerifyMiddlewer, ProductController.ProductDetailsById)
 router.post("/product-update/:id", AuthVerifyMiddlewer, ProductController.UpdateProduct)
 router.get("/product-dropdown", AuthVerifyMiddlewer, ProductController.ProductDropdown)
 router.get("/product-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ProductController.ProductDetails)
@@ -98,7 +98,7 @@ router.get("/product-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer
 
 // Expense Type api start
 router.post("/create-expense-type", AuthVerifyMiddlewer, ExpenseTypeController.CreateExpenseType)
-router.post("/expense-type-details/:id", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeDetailsById)
+router.get("/expense-type-details/:id", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeDetailsById)
 router.post("/expense-type-update/:id", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeUpdate)
 router.get("/expense-type-dropdown", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeDropDown)
 router.get("/expense-type-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeList)
@@ -106,7 +106,7 @@ router.get("/expense-type-list/:pageNumber/:perPage/:searchText", AuthVerifyMidd
 
 // Expense  api start
 router.post("/create-expense", AuthVerifyMiddlewer, ExpensesController.CreateExpense)
-router.post("/expense-details/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseDetailsById)
+router.get("/expense-details/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseDetailsById)
 router.post("/expense-update/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseUpdate)
 router.get("/expense-delete/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseDelete)
 router.get("/expense-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ExpensesController.ExpenseList)

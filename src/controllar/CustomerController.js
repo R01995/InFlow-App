@@ -38,33 +38,15 @@ exports.CustomerList = async (req, res) => {
 
 // //delete Customer
 
+
 exports.CustomerDelete = async (req, res) => {
-    try {
-        console.log("Request received for customer deletion");
-
-        const deleteId = req.params.id;
-        console.log(`Delete ID: ${deleteId}`);
-
-        const ObjectId = mongoose.Types.ObjectId;
-
-        if (!ObjectId.isValid(deleteId)) {
-            return res.status(400).json({ error: "Invalid ID format" });
-        }
-
-        console.log("Valid ID format");
-
-        let checkAssociation = await AssociateVerificationService({ customerId: new ObjectId(deleteId) }, SalesModel);
-        console.log("Association check completed");
-
-        if (checkAssociation) {
-            return res.status(200).json({ status: "associate", data: "Customer is associated with sales" });
-        } else {
-            let result = await DeleteService(req, CustomerModel);
-            console.log("Customer deletion completed");
-            res.status(200).json(result);
-        }
-    } catch (error) {
-        console.error("Error during customer deletion:", error);
-        res.status(500).json({ error: error.message });
+    let deleteId = req.params.id;
+    const ObjectId = mongoose.Types.ObjectId;
+    let checkAssociation = await AssociateVerificationService({ customerId: new ObjectId(deleteId) }, SalesModel);
+    if (checkAssociation) {
+        return res.status(200).json({ status: "associate", data: "Customer is associated with sales" });
+    } else {
+        let result = await DeleteService(req, CustomerModel);
+        res.status(200).json(result);
     }
-};
+}
