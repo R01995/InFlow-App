@@ -53,7 +53,7 @@ router.post("/reset-password", UsersControllar.ResetPassword)
 
 //Brand-Controllar start
 router.post("/create-brand", AuthVerifyMiddlewer, BrandController.CreateBrand)
-router.post("/brand-details/:id", AuthVerifyMiddlewer, BrandController.BrandDetailsById)
+router.get("/brand-details/:id", AuthVerifyMiddlewer, BrandController.BrandDetailsById)
 router.post("/brand-update/:id", AuthVerifyMiddlewer, BrandController.UpdateBrand)
 router.get("/brand-dropdown", AuthVerifyMiddlewer, BrandController.BrandDropDown)
 router.get("/brand-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, BrandController.BrandList)
@@ -102,6 +102,7 @@ router.get("/expense-type-details/:id", AuthVerifyMiddlewer, ExpenseTypeControll
 router.post("/expense-type-update/:id", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeUpdate)
 router.get("/expense-type-dropdown", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeDropDown)
 router.get("/expense-type-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ExpenseTypeController.ExpenseTypeList)
+router.get("/expense-type-delete/:id", AuthVerifyMiddlewer, ExpenseTypeController.DeleteExpenseType)
 // Expense Type api end     
 
 // Expense  api start
@@ -110,6 +111,7 @@ router.get("/expense-details/:id", AuthVerifyMiddlewer, ExpensesController.Expen
 router.post("/expense-update/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseUpdate)
 router.get("/expense-delete/:id", AuthVerifyMiddlewer, ExpensesController.ExpenseDelete)
 router.get("/expense-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ExpensesController.ExpenseList)
+ 
 // Expense  api end
 
 // purchase api start

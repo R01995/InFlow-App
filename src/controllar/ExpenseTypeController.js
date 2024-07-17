@@ -1,5 +1,6 @@
 const ExpenseTypeModel = require("../models/Expense/ExpenseTypeModel")
 const CreateService = require("../services/common/CreateService")
+const DeleteService = require("../services/common/DeleteService")
 const DetailsServiceById = require("../services/common/DetailsServiceById")
 const DropDownService = require("../services/common/DropDownService")
 const ListService = require("../services/common/ListService")
@@ -32,3 +33,8 @@ exports.ExpenseTypeList = async (req, res) => {
     let result = await ListService(req, ExpenseTypeModel,array);
     res.status(200).json(result);
 }
+
+exports.DeleteExpenseType = async (req, res) => {  // Add DeleteExpenseType function
+    let result = await DeleteService(req, ExpenseTypeModel);
+    res.status(200).json(result);
+};
