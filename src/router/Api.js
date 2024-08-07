@@ -94,6 +94,7 @@ router.get("/product-details/:id", AuthVerifyMiddlewer, ProductController.Produc
 router.post("/product-update/:id", AuthVerifyMiddlewer, ProductController.UpdateProduct)
 router.get("/product-dropdown", AuthVerifyMiddlewer, ProductController.ProductDropdown)
 router.get("/product-list/:pageNumber/:perPage/:searchText", AuthVerifyMiddlewer, ProductController.ProductDetails)
+router.get("/product-delete/:id", AuthVerifyMiddlewer, ProductController.DeleteProduct)
 //Product Api end
 
 // Expense Type api start

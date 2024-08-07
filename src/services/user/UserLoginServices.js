@@ -2,7 +2,7 @@ const CreateToken = require("../../utility/CreateToken")
 
 const bcrypt = require('bcrypt');
 
-const zsUserLoginServices = async (Reqest, DataModel) => {
+const UserLoginServices = async (Reqest, DataModel) => {
 
     try{
 
