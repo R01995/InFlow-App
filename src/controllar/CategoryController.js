@@ -33,7 +33,7 @@ exports.CategoryDropdown = async (req, res) => {
 exports.CategoryList = async (req, res) => {
     let searchRegex = {"$regex": req.params.searchText, "$options": "i"};
     let array = [{name: searchRegex}];
-    let result = await ListService(req, CategoryModel,array);
+    let result = await ListService(req, CategoryModel, array);
     res.status(200).json(result);
 }
 
