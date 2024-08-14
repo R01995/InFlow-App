@@ -1,7 +1,4 @@
 
-
-
-
 const cloudinary = require("../utility/cloudinary");
 const ProductsModel = require("../models/Product/ProductModel");
 const multer = require('multer');
@@ -203,3 +200,51 @@ exports.DeleteProduct = async (req, res) => {
   res.status(500).json({ status: 'fail', data: error });
  }
 }
+
+
+// exports.DeleteProduct = async (req, res) => {
+//   try {
+//     const deleteId = req.params.id;
+//     const ObjectId = mongoose.Types.ObjectId;
+
+//     // Function to check associations
+//     const checkAssociations = async (id) => {
+//       const ReturnAssociationCheck = await AssocialteVerificationService({ productId: new ObjectId(id) }, ReturnsProductModel);
+//       const PurchaseAssociationCheck = await AssocialteVerificationService({ productId: new ObjectId(id) }, PurchaseProductModel);
+//       const SalesAssociationCheck = await AssocialteVerificationService({ productId: new ObjectId(id) }, SalesProductModel);
+
+//       if (ReturnAssociationCheck) return "return";
+//       if (PurchaseAssociationCheck) return "purchase";
+//       if (SalesAssociationCheck) return "sales";
+//       return null;
+//     };
+
+//     // Check associations
+//     const associationType = await checkAssociations(deleteId);
+//     if (associationType) {
+//       return res.status(200).json({ status: "associate", data: `Product is associated with ${associationType}` });
+//     }
+
+//     // Find the product by ID
+//     const product = await ProductsModel.findById(deleteId);
+//     if (!product) {
+//       return res.status(404).json({ status: 'fail', message: 'Product not found' });
+//     }
+
+//     // Delete images from Cloudinary
+//     if (product.images && product.images.length > 0) {
+//       const deletePromises = product.images.map(imageUrl => {
+//         const publicId = imageUrl.split('/').pop().split('.')[0];
+//         return cloudinary.uploader.destroy(`productsimages/${publicId}`);
+//       });
+//       await Promise.all(deletePromises);
+//     }
+
+//     // Delete the product from the database
+//     const result = await DeleteService(req, ProductsModel);
+//     return res.status(200).json(result);
+
+//   } catch (error) {
+//     return res.status(500).json({ status: 'fail', data: error.message });
+//   }
+// };
