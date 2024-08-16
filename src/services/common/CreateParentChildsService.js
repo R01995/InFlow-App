@@ -67,51 +67,45 @@
 const mongoose = require("mongoose");
 
 const CreateParentChildsService = async (request, parentModel, childModel, joinParentname) => {
-
-    // একটি ট্রানজ্যাকশন সেশন তৈরি করা হচ্ছে
     const session = await mongoose.startSession();
 
     try {
-        // ট্রানজ্যাকশন শুরু করা হচ্ছে
         await session.startTransaction();
 
-        // প্রথম প্রক্রিয়া: প্যারেন্ট ডেটা তৈরি করা
+        // Check if parent data is provided
+        if (!request.body.parent) {
+            throw new Error("Parent data is missing in the request body.");
+        }
         const parentPostBody = request.body.parent;
-        
-        // প্যারেন্ট ডেটাতে `userEmail` যোগ করা হচ্ছে
+
+        // Add `userEmail` to parent data if it exists in the headers
         if (request.headers && request.headers.email) {
             parentPostBody.userEmail = request.headers.email;
         } else {
             throw new Error("User email is missing in the request headers.");
         }
 
-        // প্যারেন্ট ডেটা ডাটাবেজে তৈরি করা
         const parentDataCreation = await parentModel.create([parentPostBody], { session });
 
-        // দ্বিতীয় প্রক্রিয়া: চাইল্ড ডেটা তৈরি করা
+        // Check if child data is provided
+        if (!request.body.childs || !Array.isArray(request.body.childs)) {
+            throw new Error("Child data is missing or not an array in the request body.");
+        }
         const childPostBody = request.body.childs;
 
-        // প্রতিটি চাইল্ড রেকর্ডে প্যারেন্ট ID এবং `userEmail` যোগ করা হচ্ছে
+        // Add parent ID and `userEmail` to each child document
         childPostBody.forEach(element => {
             element[joinParentname] = parentDataCreation[0]['_id'];
             element.userEmail = request.headers.email;
         });
 
-        // চাইল্ড ডেটা ডাটাবেজে তৈরি করা
         const childDataCreation = await childModel.insertMany(childPostBody, { session });
 
-        // যদি সবকিছু সফল হয়, তবে ট্রানজ্যাকশন কমিট করা হচ্ছে
         await session.commitTransaction();
-
-        // সেশন শেষ করা
         session.endSession();
 
-        // সফল রেসপন্স রিটার্ন করা
         return { status: "success", parentData: parentDataCreation, childData: childDataCreation };
-    } 
-    
-    catch (error) {
-        // যদি কোনো ত্রুটি হয়, তাহলে ট্রানজ্যাকশন রোলব্যাক করা হবে
+    } catch (error) {
         await session.abortTransaction();
         session.endSession();
         return { status: "fail", data: error.message };
@@ -119,4 +113,3 @@ const CreateParentChildsService = async (request, parentModel, childModel, joinP
 };
 
 module.exports = CreateParentChildsService;
-
